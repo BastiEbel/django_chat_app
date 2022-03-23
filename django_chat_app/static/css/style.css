@@ -1,0 +1,23 @@
+.page-content {
+    padding: 200px 300px;
+}
+
+.color-gray {
+    color: rgba (0, 0, 0, 0.5);
+}
+
+.chat {
+    margin: 5px;
+}
+
+.mdl-button {
+    margin-left: 20px;
+    width: 80px;
+}
+
+.container-chat {
+    height: 500px;
+    width: 400px;
+    border: 1px solid rgba(0, 0, 0, 0.397);
+    box-shadow: 3px 3px 6px -1px rgba(0, 0, 0, 0.5);
+}
