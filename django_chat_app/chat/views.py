@@ -1,3 +1,4 @@
+from pickle import TRUE
 from django.http import HttpResponseRedirect
 from .models import Message, Chat
 from django.shortcuts import render
@@ -8,7 +9,6 @@ from django.contrib.auth.decorators import login_required
 
 def index(request):
     if request.method == 'POST':
-        print('Received data' + request.POST['textmessage'])
         mychat = Chat.objects.get(id=1)
         Message.objects.create(text=request.POST['textmessage'], chat=mychat, author=request.user, receiver=request.user)
     chatMessages = Message.objects.filter(chat__id=1)
@@ -22,5 +22,14 @@ def login_view(request):
             login(request, user)
             return HttpResponseRedirect(request.POST.get('redirect'))
         else:
-            return render(request, 'auth/login.html', {'wrongPassword' : True, 'redirect': redirect})
+            return render(request, 'auth/login.html', {'wrongPassword' : True, 'wrongUsername' : True, 'redirect': redirect})
     return render(request, 'auth/login.html', {'redirect': redirect})
+
+def register_view(request):
+    redirect = request.GET.get('next')
+    if request.method == 'POST':
+        user = authenticate(request, username=request.GET.get('username'), password=request.GET.get('password'))
+        if user:
+            login(request, user)
+            return HttpResponseRedirect(request.GET.get('redirect'))
+    return render(request, 'auth/register.html', {'redirect': redirect})

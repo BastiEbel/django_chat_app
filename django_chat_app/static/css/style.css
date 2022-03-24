@@ -21,3 +21,67 @@
     border: 1px solid rgba(0, 0, 0, 0.397);
     box-shadow: 3px 3px 6px -1px rgba(0, 0, 0, 0.5);
 }
+
+.login-container {
+    width: 280px;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.header-login {
+    border-top-right-radius: 8px;
+    border-top-left-radius: 8px;
+}
+
+.container {
+    width: 400px;
+    height: 400px;
+    box-shadow: 5px 5px 7px 1px rgba(0, 0, 0, 0.36);
+    border-radius: 8px;
+}
+
+input {
+    height: 30px;
+    width: 200px;
+    margin-bottom: 20px;
+}
+
+button {
+    margin-top: 10px;
+    width: 100px;
+    height: 30px;
+}
+
+.login-field {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+a {
+    margin-bottom: 20px;
+    font-size: larger;
+}
+
+.container-register {
+    height: 80px;
+    padding-right: 40px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+}
+
+.register-field {
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: baseline;
+}

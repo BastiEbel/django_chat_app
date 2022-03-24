@@ -1,0 +1,23 @@
+{% extends "base.html" %} {% block content %}
+<form method="GET" action="/register/">
+    <div class="container">
+        <header class="mdl-layout__header header-login">
+            <div class="mdl-layout__header-row">
+                <!-- Title -->
+                <span class="mdl-layout-title">
+                        Register
+                    </span>
+            </div>
+        </header>
+        <input type="hidden" name="redirect" value="{{ redirect }}">
+        <div class="login-field">
+            {% csrf_token %}
+            <div class="register-field">Username: <input name="username" type="text" placeholder=" Username"></div>
+            <div class="register-field">Email: <input name="email" type="email" placeholder="email"></div>
+            <div class="register-field">Password: <input name="password" type="password" placeholder=" Password"></div>
+            <div class="register-field">Confirm Password: <input name="confirmPassword" type="password" placeholder="Confirm Password"></div>
+            <div class="login-container"><button>Login</button></div>
+        </div>
+    </div>
+</form>
+{% endblock %}
