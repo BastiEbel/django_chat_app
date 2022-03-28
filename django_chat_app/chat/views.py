@@ -4,9 +4,9 @@ from .models import Message, Chat
 from django.shortcuts import redirect, render
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
-from django.contrib.auth.models import User, AnonymousUser
+from django.contrib.auth.models import User
 
-@login_required(login_url='/login/')
+@login_required(login_url='/login')
 
 def index(request):
     if request.method == 'POST':
@@ -14,6 +14,7 @@ def index(request):
         Message.objects.create(text=request.POST['textmessage'], chat=mychat, author=request.user, receiver=request.user)
     chatMessages = Message.objects.filter(chat__id=1)
     return render(request, 'chat/index.html', {'messages': chatMessages})
+
 
 def login_view(request):
     redirect = request.GET.get('next')
@@ -37,7 +38,6 @@ def register_view(request):
             return render(request, 'auth/register.html', {'wrongPassword': True})
     return render(request, 'auth/register.html')
 
-@login_required(login_url='/login/')
 def logout_view(request):
     logout(request)
-    return render(request,'auth/login.html')
+    return render(request, 'auth/login.html')

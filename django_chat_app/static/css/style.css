@@ -73,8 +73,11 @@ form {
 }
 
 a {
-    margin-bottom: 20px;
     font-size: larger;
+}
+
+a:hover {
+    color: rgb(255, 130, 172);
 }
 
 .container-register {
