@@ -1,9 +1,10 @@
 from pickle import TRUE
 from django.http import HttpResponseRedirect
 from .models import Message, Chat
-from django.shortcuts import render
-from django.contrib.auth import authenticate, login
+from django.shortcuts import redirect, render
+from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth.models import User, AnonymousUser
 
 @login_required(login_url='/login/')
 
@@ -26,10 +27,17 @@ def login_view(request):
     return render(request, 'auth/login.html', {'redirect': redirect})
 
 def register_view(request):
-    redirect = request.GET.get('next')
+    redirect = request.POST.get('next', '/')
     if request.method == 'POST':
-        user = authenticate(request, username=request.GET.get('username'), password=request.GET.get('password'))
-        if user:
-            login(request, user)
-            return HttpResponseRedirect(request.GET.get('redirect'))
-    return render(request, 'auth/register.html', {'redirect': redirect})
+        if request.POST.get('password') == request.POST.get('confirm_password'):
+            user = User.objects.create_user(username=request.POST.get('username'), email=request.POST.get('email'), password=request.POST.get('password'))
+            user.save()
+            return HttpResponseRedirect(redirect)
+        else:
+            return render(request, 'auth/register.html', {'wrongPassword': True})
+    return render(request, 'auth/register.html')
+
+@login_required(login_url='/login/')
+def logout_view(request):
+    logout(request)
+    return render(request,'auth/login.html')

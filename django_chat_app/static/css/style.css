@@ -1,5 +1,9 @@
 .page-content {
-    padding: 200px 300px;
+    height: calc(100vh - 100px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
 }
 
 .color-gray {
@@ -42,7 +46,7 @@
 
 input {
     height: 30px;
-    width: 200px;
+    width: 180px;
     margin-bottom: 20px;
 }
 
@@ -53,6 +57,8 @@ button {
 }
 
 .login-field {
+    margin-top: 30px;
+    height: 300px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -80,8 +86,8 @@ a {
 }
 
 .register-field {
-    width: 100%;
+    width: 80%;
     display: flex;
-    justify-content: space-evenly;
+    justify-content: space-between;
     align-items: baseline;
 }

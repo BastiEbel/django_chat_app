@@ -1,5 +1,5 @@
 {% extends "base.html" %} {% block content %}
-<form method="GET" action="/register/">
+<form method="POST" action="/register/">
     <div class="container">
         <header class="mdl-layout__header header-login">
             <div class="mdl-layout__header-row">
@@ -9,14 +9,16 @@
                     </span>
             </div>
         </header>
-        <input type="hidden" name="redirect" value="{{ redirect }}">
+        <input type="hidden" name="redirect" value="{{ request.path }}">
         <div class="login-field">
             {% csrf_token %}
             <div class="register-field">Username: <input name="username" type="text" placeholder=" Username"></div>
             <div class="register-field">Email: <input name="email" type="email" placeholder="email"></div>
             <div class="register-field">Password: <input name="password" type="password" placeholder=" Password"></div>
-            <div class="register-field">Confirm Password: <input name="confirmPassword" type="password" placeholder="Confirm Password"></div>
-            <div class="login-container"><button>Login</button></div>
+            <div class="register-field">Confirm Password: <input name="confirm_password" type="password" placeholder="Confirm Password"></div>
+            {% if wrongPassword %}
+            <p>Please write the same password</p>
+            {% endif %}
         </div>
     </div>
 </form>
