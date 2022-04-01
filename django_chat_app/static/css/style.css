@@ -24,6 +24,7 @@
     width: 400px;
     border: 1px solid rgba(0, 0, 0, 0.397);
     box-shadow: 3px 3px 6px -1px rgba(0, 0, 0, 0.5);
+    overflow: auto;
 }
 
 .login-container {
