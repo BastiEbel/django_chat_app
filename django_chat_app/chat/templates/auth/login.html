@@ -12,7 +12,7 @@
         <input type="hidden" name="redirect" value="{{ redirect }}">
         <div class="login-field">
             {% csrf_token %}
-            <div class="register-field">Username: <input name="username" type="text" placeholder=" Username"></div>
+            <div class="register-field">Username: <input name="username" type="text" placeholder=" Username" id="usernameJson"></div>
             <div class="register-field">Password: <input name="password" type="password" placeholder=" Password"></div>
             <div class="login-container"><button>Login</button></div>
         </div>

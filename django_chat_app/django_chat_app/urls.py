@@ -21,7 +21,7 @@ from chat.views import index, login_view, register_view, logout_view
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', index),
+    path('logout/', logout_view),
     path('login/', login_view),
     path('register/', register_view),
-    path('logout/', logout_view),
 ]

@@ -2,12 +2,24 @@
 <div class="container-chat" id="messageContainer">
     {% for message in messages %}
     <div class="chat">
-        <span class="color-gray">{{ message.created_at }}</span> {{ message.author }}: <i>{{ message.text }}</i>
+        {% if request.user.first_name == message.author.first_name %}
+        <div class="main-user">
+            <div class="chat-section">
+                <span class="color-black">{{ message.created_at }}</span> {{ message.author.first_name }}: <i>{{ message.text }}</i>
+            </div>
+        </div>
+        {% else %}
+        <div class="otheruser">
+            <div class="chat-section">
+                <span class="color-black">{{ message.created_at }}</span> {{ message.author.first_name }}: <i>{{ message.text }}</i>
+            </div>
+        </div>
+        {% endif %}
     </div>
     {% endfor %}
 </div>
 
-<form onsubmit="sendMessage(); return false;" method="post">
+<form onsubmit="sendMessage(); return false;" method="POST">
     {% csrf_token %}
     <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
         <input class="mdl-textfield__input" name="textmessage" type="text " id="messageField">
@@ -17,4 +29,4 @@
         Send
     </button>
 </form>
-{% else %} {% endif %} {% endblock %}
+{% endif %} {% endblock %}

@@ -12,8 +12,10 @@
         <input type="hidden" name="redirect" value="{{ request.path }}">
         <div class="login-field">
             {% csrf_token %}
-            <div class="register-field">Username: <input name="username" type="text" placeholder=" Username"></div>
-            <div class="register-field">Email: <input name="email" type="email" placeholder="email"></div>
+            <div class="register-field">Username: <input name="username" type="text" id="userName" placeholder=" Username"></div>
+            <div class="register-field">First Name: <input name="first_name" type="text" placeholder="First Name" id="firstName"></div>
+            <div class="register-field">Last Name: <input name="last_name" type="text" placeholder="Last Name" id="lastName"></div>
+            <div class="register-field">Email: <input name="email" type="email" id="eMail" placeholder="email"></div>
             <div class="register-field">Password: <input name="password" type="password" placeholder=" Password"></div>
             <div class="register-field">Confirm Password: <input name="confirm_password" type="password" placeholder="Confirm Password"></div>
             <div class="login-container"><button>Register</button></div>

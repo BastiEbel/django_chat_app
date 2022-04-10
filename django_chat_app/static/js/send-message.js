@@ -1,3 +1,5 @@
+let logJson;
+
 async function sendMessage() {
     let fd = new FormData();
     let token = document.querySelector('[name=csrfmiddlewaretoken]').value;
@@ -12,8 +14,8 @@ async function sendMessage() {
     fd.append('textmessage', messageField.value);
     fd.append('csrfmiddlewaretoken', token);
     try {
-        messageContainer.innerHTML += `<div class="chat" id="deleteMessage">
-        <span class="color-gray">${dateString}</span> {{ request.user.username }} <i class="color-gray">${messageField.value}</i>
+        messageContainer.innerHTML += `<div class="chat-section" id="deleteMessage">
+        <span class="color-gray">${dateString}</span> {{ request.user.first_name }}: <i class="color-gray">${messageField.value}</i>
         </div>`;
 
         let response = await fetch('', {
@@ -22,13 +24,61 @@ async function sendMessage() {
         });
 
         let json = await response.json();
-        let chatJson = JSON.parse(json);
+        let obj = JSON.parse(json);
+        console.log('json is:', obj.fields);
+
 
         document.getElementById('deleteMessage').remove();
-        messageContainer.innerHTML += `<div class="chat">
-        <span class="color-gray">${chatJson.created_at}</span> {{ request.user.username }} <i>${chatJson.text}</i>
+        messageContainer.innerHTML += `<div class="chat-section">
+        <span class="color-black">${dateString}</span> {{ request.user.first_name }}: <i>${obj.fields.text}</i>
         </div>`;
+        location.reload();
     } catch (e) {
-        console.log('an error occured', e);
+        messageContainer.innerHTML += `<div class="chat color-red">
+            <span class="color-red">${dateString}</span> {{ request.user.first_name }}: <i class="color-gray">${messageField.value}</i>
+            </div>`;
     }
+}
+
+async function userRegister() {
+    /* let fd = new FormData();
+
+    fd.append('username', userName.value);
+    fd.append('first_name', firstName.value);
+    fd.append('last_name', lastName.value);
+    fd.append('email', eMail.value);
+
+    try {
+        let response = await fetch('/register/', {
+            method: 'POST',
+            body: fd
+        });
+
+        let userjson = await response.json();
+        JSON.parse(json);
+        console.log('json is:', userjson);
+    } catch (e) {
+        console.log(e);
+    } */
+}
+
+async function loginUser() {
+    /* let fd = new FormData();
+    let token = document.querySelector('[name=csrfmiddlewaretoken]').value;
+
+    fd.append('username', usernameJson.value);
+    fd.append('csrfmiddlewaretoken', token);
+
+    try {
+        let response = await fetch('/login/', {
+            method: 'POST',
+            body: fd
+        });
+
+        loginjson = await response.json();
+        logJson = JSON.parse(loginjson);
+        console.log('json is:', logJson);
+    } catch (e) {
+        console.log(e);
+    } */
 }

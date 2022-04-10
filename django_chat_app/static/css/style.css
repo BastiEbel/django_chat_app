@@ -7,11 +7,41 @@
 }
 
 .color-gray {
-    color: rgba (0, 0, 0, 0.5);
+    color: rgba(0, 0, 0, 0.26)
+}
+
+.color-black {
+    color: black;
+}
+
+.color-red {
+    color: rgba(255, 0, 0, 0.671);
 }
 
 .chat {
-    margin: 5px;
+    margin-top: 8px;
+    margin-bottom: 8px;
+    margin-right: 16px;
+    margin-left: 16px;
+    width: calc(100% - 32px);
+}
+
+.chat-section {
+    background-color: rgba(204, 204, 204, 0.267);
+    border: 1px solid black;
+    border-radius: 5px;
+    padding-left: 8px;
+    padding-right: 8px;
+}
+
+.main-user {
+    display: flex;
+    justify-content: flex-start;
+}
+
+.otheruser {
+    display: flex;
+    justify-content: flex-end;
 }
 
 .mdl-button {
@@ -20,8 +50,8 @@
 }
 
 .container-chat {
-    height: 500px;
-    width: 400px;
+    height: 600px;
+    width: 500px;
     border: 1px solid rgba(0, 0, 0, 0.397);
     box-shadow: 3px 3px 6px -1px rgba(0, 0, 0, 0.5);
     overflow: auto;
@@ -40,15 +70,15 @@
 
 .container {
     width: 400px;
-    height: 400px;
+    height: 450px;
     box-shadow: 5px 5px 7px 1px rgba(0, 0, 0, 0.36);
     border-radius: 8px;
 }
 
 input {
-    height: 30px;
+    height: 25px;
     width: 180px;
-    margin-bottom: 20px;
+    margin-bottom: 15px;
 }
 
 button {
