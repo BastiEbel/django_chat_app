@@ -21,6 +21,12 @@ def index(request):
     chatMessages = Message.objects.filter(chat__id=1)
     return render(request, 'chat/index.html', {'messages': chatMessages})
 
+def profile_view(request):
+    if request.method == 'GET':
+        user_email = request.user.email
+        user_firstname = request.user.first_name
+        user_lastname = request.user.last_name
+        return render(request, 'chat/profile.html', {'email': user_email, 'firstname': user_firstname, 'lastname': user_lastname})
 
 def login_view(request):
     """
@@ -28,7 +34,7 @@ def login_view(request):
     """
     redirect = request.GET.get('next')
     if request.method == 'POST':
-        user = authenticate(request, username=request.POST.get('username'), password=request.POST.get('password')) 
+        user = authenticate(request, username=request.POST.get('username'), password=request.POST.get('password'))
         if user:
             login(request, user)
             return HttpResponseRedirect(request.POST.get('redirect'))
@@ -42,6 +48,8 @@ def register_view(request):
     """
     redirect = request.POST.get('next', '/')
     if request.method == 'POST':
+        if User.objects.filter(username = request.POST.get('username')).first():
+            return render(request, 'auth/register.html', {'wrongUsername': True})
         if request.POST.get('password') == request.POST.get('confirm_password'):
             user = User.objects.create_user(username=request.POST.get('username'), first_name=request.POST.get('first_name'), last_name=request.POST.get('last_name'), 
             email=request.POST.get('email'), password=request.POST.get('password'))

@@ -1,6 +1,7 @@
 let logJson;
 
-async function sendMessage() {
+async function sendMessage(event) {
+    event.preventDefault();
     let fd = new FormData();
     let token = document.querySelector('[name=csrfmiddlewaretoken]').value;
     let date = new Date();
@@ -75,7 +76,7 @@ async function loginUser() {
             body: fd
         });
 
-        loginjson = await response.json();
+        let loginjson = await response.json();
         logJson = JSON.parse(loginjson);
         console.log('json is:', logJson);
     } catch (e) {

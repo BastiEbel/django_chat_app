@@ -6,6 +6,28 @@
     flex-direction: column;
 }
 
+.mdl-layout__header-row {
+    padding-right: 16px !important;
+    padding-left: 16px !important;
+}
+
+.menu-link {
+    color: black;
+    text-decoration: none;
+}
+
+.profil-img {
+    height: 48px !important;
+    width: 48px !important;
+    border-radius: 50% !important;
+    margin-right: 16px !important;
+}
+
+.mdl-button {
+    width: 32px !important;
+    margin-left: 16px !important;
+}
+
 .color-gray {
     color: rgba(0, 0, 0, 0.26)
 }

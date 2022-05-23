@@ -21,6 +21,8 @@
             <div class="login-container"><button>Register</button></div>
             {% if wrongPassword %}
             <p>Please write the same password</p>
+            {% endif %}{% if wrongUsername %}
+            <p>Username already exists.</p>
             {% endif %}
         </div>
     </div>

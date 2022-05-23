@@ -1,0 +1,15 @@
+{% extends "base.html" %} {% block content %} {% if request.user.is_authenticated %}
+<div class="demo-card-wide mdl-card mdl-shadow--2dp">
+    <div class="mdl-card__title">
+        <h2 class="mdl-card__title-text">Profil Settings</h2>
+    </div>
+    <div class="mdl-card__supporting-text">
+        <span>{{ request.user.first_name }}</span>
+    </div>
+    <div class="mdl-card__actions mdl-card--border">
+        <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
+        Save
+      </a>
+    </div>
+</div>
+{% endif %} {% endblock %}
